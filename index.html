@@ -100,16 +100,16 @@
                 We implement robust security measures, including encryption, access controls, and photo verification, to protect your data. However, no system is completely secure, and we cannot guarantee absolute security. You are responsible for maintaining the confidentiality of your account credentials.
             </p>
             <p>
-                Romo includes features like reporting and blocking to help you maintain a safe environment. If you suspect unauthorized access, contact our support team immediately at <a href="mailto:lakliech.devs@proton.me">Support</a>.
+                Romo includes features like reporting and blocking to help you maintain a safe environment. If you suspect unauthorized access, contact our support team immediately at <a href="mailto:lakliech.devs@proton.me">lakliech.devs@proton.me</a>.
             </p>
         </section>
 
-        <section class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <section id="account-deletion" class="bg-white rounded-lg shadow-md p-6 mb-8">
             <h2 class="text-2xl font-semibold mb-4">Your Choices and Rights</h2>
             <p class="mb-4">You have the following rights regarding your data:</p>
             <ul class="list-disc pl-6 mb-4">
                 <li>Access and Update: View and edit your profile information within the app.</li>
-                <li>Delete: Request deletion of your account using the form below or by contacting <a href="mailto:lakliech.devs@proton.me">Support</a>. Note that some data may be retained for legal or operational purposes.</li>
+                <li>Delete: Request deletion of your account using the form below or by contacting <a href="mailto:lakliech.devs@proton.me">lakliech.devs@proton.me</a>. Note that some data may be retained for legal or operational purposes.</li>
                 <li>Opt-Out: Disable push notifications or location services via your device settings.</li>
                 <li>Data Portability: Request a copy of your data in a structured format, where feasible.</li>
             </ul>
@@ -118,21 +118,21 @@
             </p>
             <h3 class="text-xl font-medium mb-2">Account Deletion Request</h3>
             <p class="mb-4">
-                To request deletion of your Romo account, please fill out the form below. We will process your request within 30 days and send a confirmation to the provided email address. Ensure the email and user ID match your Romo account.
+                To request deletion of your Romo account, please fill out the form below. We will process your request within 30 days and send a confirmation to the provided email address. Ensure the email and user ID match your Romo account. You can find your User ID in the app's profile settings.
             </p>
             <div id="alert-container" class="mb-4 hidden"></div>
             <div class="space-y-4">
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700">Email Address <span class="text-red-500">*</span></label>
-                    <input type="email" id="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-pink-500 focus:ring-pink-500 sm:text-sm" placeholder="Enter your email" required>
+                    <input type="email" id="email" name="_replyto" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-pink-500 focus:ring-pink-500 sm:text-sm" placeholder="Enter your email" required>
                 </div>
                 <div>
                     <label for="userId" class="block text-sm font-medium text-gray-700">User ID <span class="text-red-500">*</span></label>
-                    <input type="text" id="userId" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-pink-500 focus:ring-pink-500 sm:text-sm" placeholder="Enter your Romo user ID" required>
+                    <input type="text" id="userId" name="userId" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-pink-500 focus:ring-pink-500 sm:text-sm" placeholder="Enter your Romo user ID" required>
                 </div>
                 <div>
                     <label for="reason" class="block text-sm font-medium text-gray-700">Reason for Deletion (Optional)</label>
-                    <textarea id="reason" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-pink-500 focus:ring-pink-500 sm:text-sm" rows="4" placeholder="Why are you deleting your account?"></textarea>
+                    <textarea id="reason" name="reason" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-pink-500 focus:ring-pink-500 sm:text-sm" rows="4" placeholder="Why are you deleting your account?"></textarea>
                 </div>
                 <button id="submitDeletion" class="w-full bg-pink-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 flex items-center justify-center">
                     <span>Submit Deletion Request</span>
@@ -143,7 +143,7 @@
                 </button>
             </div>
             <p class="mt-4 text-sm text-gray-600">
-                Note: After submitting, you will receive a confirmation email within 24 hours. If you do not receive it, check your spam folder or contact <a href="mailto:lakliech.devs@proton.me">Support</a>.
+                Note: After submitting, you will receive a confirmation email within 24 hours. If you do not receive it, check your spam folder or contact <a href="mailto:lakliech.devs@proton.me">lakliech.devs@proton.me</a>.
             </p>
         </section>
 
@@ -181,7 +181,7 @@
                 If you have questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us at:
             </p>
             <p class="mt-2">
-                Email: <a href="mailto:lakliech.devs@proton.me">Support</a><br>
+                Email: <a href="mailto:lakliech.devs@proton.me">lakliech.devs@proton.me</a><br>
             </p>
             <p class="mt-2">
                 Our 24/7 customer support team is here to assist you.
@@ -200,7 +200,7 @@
         </div>
     </footer>
 
-   <!-- JavaScript for Form Handling -->
+    <!-- JavaScript for Form Handling -->
     <script>
         const submitButton = document.getElementById('submitDeletion');
         const loadingSpinner = document.getElementById('loadingSpinner');
