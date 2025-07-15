@@ -100,7 +100,7 @@
                 We implement robust security measures, including encryption, access controls, and photo verification, to protect your data. However, no system is completely secure, and we cannot guarantee absolute security. You are responsible for maintaining the confidentiality of your account credentials.
             </p>
             <p>
-                Romo includes features like reporting and blocking to help you maintain a safe environment. If you suspect unauthorized access, contact our support team immediately at <a href="mailto:support@romoapp.com">support@romoapp.com</a>.
+                Romo includes features like reporting and blocking to help you maintain a safe environment. If you suspect unauthorized access, contact our support team immediately at <a href="mailto:lakliech.devs@proton.me">Support</a>.
             </p>
         </section>
 
@@ -109,7 +109,7 @@
             <p class="mb-4">You have the following rights regarding your data:</p>
             <ul class="list-disc pl-6 mb-4">
                 <li>Access and Update: View and edit your profile information within the app.</li>
-                <li>Delete: Request deletion of your account using the form below or by contacting <a href="mailto:support@romoapp.com">support@romoapp.com</a>. Note that some data may be retained for legal or operational purposes.</li>
+                <li>Delete: Request deletion of your account using the form below or by contacting <a href="mailto:lakliech.devs@proton.me">Support</a>. Note that some data may be retained for legal or operational purposes.</li>
                 <li>Opt-Out: Disable push notifications or location services via your device settings.</li>
                 <li>Data Portability: Request a copy of your data in a structured format, where feasible.</li>
             </ul>
@@ -143,7 +143,7 @@
                 </button>
             </div>
             <p class="mt-4 text-sm text-gray-600">
-                Note: After submitting, you will receive a confirmation email within 24 hours. If you do not receive it, check your spam folder or contact <a href="mailto:support@romoapp.com">support@romoapp.com</a>.
+                Note: After submitting, you will receive a confirmation email within 24 hours. If you do not receive it, check your spam folder or contact <a href="mailto:lakliech.devs@proton.me">Support</a>.
             </p>
         </section>
 
@@ -181,7 +181,7 @@
                 If you have questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us at:
             </p>
             <p class="mt-2">
-                Email: <a href="mailto:lakliech.devs@proton.me">support@romoapp.com</a><br>
+                Email: <a href="mailto:lakliech.devs@proton.me">Support</a><br>
             </p>
             <p class="mt-2">
                 Our 24/7 customer support team is here to assist you.
@@ -200,11 +200,12 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Form Handling -->
+   <!-- JavaScript for Form Handling -->
     <script>
         const submitButton = document.getElementById('submitDeletion');
         const loadingSpinner = document.getElementById('loadingSpinner');
         const alertContainer = document.getElementById('alert-container');
+        const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mldlebzg'; // Your Formspree endpoint
 
         function showAlert(message, type = 'error') {
             alertContainer.innerHTML = `
@@ -250,24 +251,25 @@
             submitButton.querySelector('span').textContent = 'Submitting...';
 
             try {
-                const response = await fetch('/api/delete-account', {
+                const response = await fetch(FORMSPREE_ENDPOINT, {
                     method: 'POST',
                     headers: {
+                        'Accept': 'application/json',
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        email,
-                        userId,
-                        reason,
-                        recipient: 'lakliech.devs@proton.me',
+                        _replyto: email,
+                        userId: userId,
+                        reason: reason || 'Not provided',
+                        _subject: 'Romo Account Deletion Request',
                     }),
                 });
 
                 if (!response.ok) {
-                    throw new Error('Failed to submit deletion request.');
+                    const errorData = await response.json().catch(() => ({}));
+                    throw new Error(errorData.error || 'Failed to submit deletion request.');
                 }
 
-                const result = await response.json();
                 showAlert('Your deletion request has been submitted successfully. You will receive a confirmation email within 24 hours.', 'success');
                 // Reset form
                 document.getElementById('email').value = '';
@@ -275,6 +277,7 @@
                 document.getElementById('reason').value = '';
             } catch (error) {
                 showAlert(`Error: ${error.message}`);
+                console.error('Submission error:', error);
             } finally {
                 // Hide loading spinner
                 submitButton.disabled = false;
